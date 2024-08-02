@@ -8,6 +8,7 @@ UNPACKBOOTIMG=../../../system/tools/mkbootimg/unpack_bootimg.py
 ROM_ZIP=$1
 
 declare -a DTBO_PANEL_PATCHES=(
+    "Garnet:dsi_n16_41_02_0c_dsc_vid" 
     "Garnet:dsi_n16_42_02_0b_dsc_vid"
     "Garnet:dsi_n16_36_0d_0a_dsc_vid"
 )
@@ -58,9 +59,8 @@ fi
 
 # Create needed directories
 for dir in ./modules/dlkm ./modules/ramdisk ./images ./images/dtbs; do
-    if [[ ! -d $dir ]]; then
-    	mkdir -p $dir
-    fi
+    rm -rf $dir
+    mkdir -p $dir
 done
 
 # Extract the OTA package
